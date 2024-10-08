@@ -67,5 +67,40 @@ namespace BookStoreAPI.Controllers
 
             return CreatedAtAction(nameof(GetBookById), new { id = book.Id }, book);
         }
+        /// <summary>
+        /// Updates an existing book.
+        /// </summary>
+        /// <param name="id">The id of the book to update.</param>
+        /// <param name="book">The updated book data.</param>
+        /// <returns>The updated book.</returns>
+        [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<Book> UpdateBook(int id, Book book)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var existingBook = _bookStoreDataService.GetBookById(id);
+                existingBook.Title = book.Title;
+                existingBook.Author = book.Author;
+                existingBook.Price = book.Price;
+
+                _bookStoreDataService.UpdateBook(existingBook);
+
+                return existingBook;
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
+            }
+        }
+
+
     }
 }
