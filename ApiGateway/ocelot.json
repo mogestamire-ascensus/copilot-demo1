@@ -50,18 +50,6 @@
           "Port": 7213
         }
       ]
-    },
-    {
-      "UpstreamPathTemplate": "/api/gw/books/{id}",
-      "UpstreamHttpMethod": [ "DELETE" ],
-      "DownstreamPathTemplate": "/api/books/{id}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 7213
-        }
-      ]
     }
   ]
 }
