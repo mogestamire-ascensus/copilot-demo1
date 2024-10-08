@@ -1,0 +1,67 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:5001"
+  },
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/api/gw/books/{id}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/books/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7213
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/gw/books",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamPathTemplate": "/api/books",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7213
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/gw/books",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamPathTemplate": "/api/books",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7213
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/gw/books/{id}",
+      "UpstreamHttpMethod": [ "PUT" ],
+      "DownstreamPathTemplate": "/api/books/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7213
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/api/gw/books/{id}",
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "DownstreamPathTemplate": "/api/books/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7213
+        }
+      ]
+    }
+  ]
+}
