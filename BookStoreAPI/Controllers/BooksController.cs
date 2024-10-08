@@ -100,6 +100,33 @@ namespace BookStoreAPI.Controllers
                 return NotFound();
             }
         }
+        /// <summary>
+        /// Deletes a book by its id.
+        /// </summary>
+        /// <param name="id">The id of the book to delete.</param>
+        /// <returns>The deleted book.</returns>
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<Book> DeleteBook(int id)
+        {
+            try
+            {
+                var book = _bookStoreDataService.GetBookById(id);
+                if (book == null)
+                {
+                    return NotFound();
+                }
+
+                _bookStoreDataService.DeleteBook(book);
+
+                return book;
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
+            }
+        }
 
 
     }
